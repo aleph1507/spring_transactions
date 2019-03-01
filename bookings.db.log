@@ -1,0 +1,8 @@
+/*C12*/SET SCHEMA PUBLIC
+drop table transaction if exists
+drop table transaction_line if exists
+create table transaction (id bigint not null, customer_name varchar(255), customer_pos_id integer not null, date_time timestamp, employee_code varchar(255), employee_name varchar(255), guest_count integer not null, pos_name varchar(255), table_name varchar(255), table_pos_id integer not null, primary key (id))
+create table transaction_line (id bigint not null, amount integer not null, description varchar(255), field1 varchar(255), field2 varchar(255), group_name varchar(255), item_code varchar(255), item_name varchar(255), line_type integer not null, menu_name varchar(255), price_each double not null, vat_percentage double not null, transaction_id bigint not null, primary key (id))
+alter table transaction_line add constraint FKpcwy5qy4l2qo2a67sdugbcxfr foreign key (transaction_id) references transaction
+INSERT INTO TRANSACTION VALUES(0,'cusName',12,'2018-10-10 02:00:00.000000','empCode','empName',1000,'posName','tabName',3)
+COMMIT
